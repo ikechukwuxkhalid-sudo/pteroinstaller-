@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pterodactyl Installer</title><link rel="stylesheet" href="css/style.css">
+</head><body>
+<main>
+<section id="login" class="card hidden"><h1>🦖 Pterodactyl Installer</h1>
+  <input id="lu" placeholder="Username" autocomplete="username"><input id="lp" type="password" placeholder="Password" autocomplete="current-password">
+  <button id="loginBtn">Log in</button><p id="lerr" class="err"></p></section>
+
+<section id="app" class="hidden">
+  <header><span id="who"></span><button class="ghost" id="logout">Log out</button></header>
+  <nav><button data-tab="install" class="on">Install</button><button data-tab="repair">Fix Docker</button><button data-tab="history">History</button><button data-tab="admin" id="adminTab" class="hidden">Access</button></nav>
+
+  <div id="install" class="tab card"><h2>New install</h2><form id="f">
+    <input name="ip" placeholder="VPS IP" inputmode="decimal" required><input name="port" placeholder="SSH port" value="22">
+    <input name="sshUser" placeholder="SSH username" value="root"><input name="sshPass" type="password" placeholder="SSH password" required>
+    <input name="panelDomain" placeholder="Panel domain (panel.example.com)" required><input name="nodeDomain" placeholder="Node domain (node.example.com)" required>
+    <input name="email" type="email" placeholder="Email" required><input name="adminUser" placeholder="Panel admin username" required>
+    <input name="adminPass" type="password" placeholder="Panel admin password" required>
+    <p class="hint">Domains must already point to this VPS (DNS only, proxy off) and port 80 must be open.</p>
+    <button>Start install</button></form></div>
+
+  <div id="repair" class="tab card hidden"><h2>Repair Docker</h2><form id="rf">
+    <input name="ip" placeholder="VPS IP" required><input name="port" placeholder="SSH port" value="22">
+    <input name="sshUser" placeholder="SSH username" value="root"><input name="sshPass" type="password" placeholder="SSH password" required>
+    <button>Run repair</button></form></div>
+
+  <div id="history" class="tab card hidden"><h2>History</h2><div id="hlist"></div></div>
+
+  <div id="admin" class="tab card hidden"><h2>Give access</h2><form id="af">
+    <input name="username" placeholder="Username" required><input name="password" type="password" placeholder="Password" required>
+    <input name="time" placeholder="Time: 30m, 12h, 1d, 7d, 2w" required><button>Add user</button></form>
+    <div id="ulist"></div></div>
+
+  <div id="logbox" class="card hidden"><div class="row"><b id="ltitle">Live log</b><button class="ghost" id="cancel">Cancel</button></div>
+    <div class="bar"><i id="pbar"></i></div><pre id="log"></pre></div>
+</section>
+<p id="msg" class="err"></p>
+</main>
+<script src="js/config.js"></script><script src="js/app.js"></script>
+</body></html>
